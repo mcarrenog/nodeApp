@@ -1,0 +1,16 @@
+{
+    "entryFile": "src/index.ts",
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "spec": {
+      "outputDirectory": "public",
+      "specVersion": 3,
+      "name": "nodeApp",
+      "description": "Microservicio con distintas practicas realizadas en node",
+      "tags": [{
+        "name": "EventController",
+        "description": "EventController Api"
+      },
+    {"name":"IndicatorController",
+      "description" :"IndicatorController Api"}]
+    }
+  }

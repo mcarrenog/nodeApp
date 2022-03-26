@@ -1,0 +1,63 @@
+{
+  "name": "nodeapp",
+  "version": "1.0.0",
+  "description": "Servicio Node con multiples repositorios",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest --coverage",
+    "build": "tsoa spec && tsc",
+    "start": "node ./dist/src/index.js",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec\"",
+    "prepare": "husky install",
+    "lint-staged": "eslint --ignore-path .gitignore .",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.ts\"",
+    "compile": "npm run lint-staged && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcarrenog/nodeApp.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "mcarrenog",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^16.0.0",
+    "express": "~4.17.1",
+    "moment": "^2.29.1",
+    "mongodb": "^3.7.1",
+    "nodeappmodel": "file:./localDependencies/nodeappmodel-1.0.0.tgz",
+    "nodeapprepositories": "file:./localDependencies/nodeapprepositories-1.0.0.tgz",
+    "nodeapputils": "file:./localDependencies/nodeapputils-1.0.0.tgz",
+    "typeorm": "^0.2.37",
+    "redis": "^4.0.1"
+  },
+  "devDependencies": {
+    "@google-cloud/pubsub": "^2.18.4",
+    "@types/lodash": "^4.14.174",
+    "@types/mongodb": "^4.0.7",
+    "@types/node": "^16.9.1",
+    "@types/swagger-ui-express": "^4.1.3",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "concurrently": "^6.2.1",
+    "eslint": "^7.32.0",
+    "express-validator": "^6.12.1",
+    "husky": "^7.0.4",
+    "inversify": "^5.1.1",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.12",
+    "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^4.1.6",
+    "ts-node": "^10.2.1",
+    "tsoa": "^3.11.0",
+    "typescript": "^4.4.3",
+    "winston": "^3.3.3"
+  },
+  "bugs": {
+    "url": "https://github.com/mcarrenog/nodeApp/issues"
+  },
+  "homepage": "https://github.com/mcarrenog/nodeApp#readme"
+}

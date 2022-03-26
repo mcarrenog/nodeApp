@@ -1,0 +1,314 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"ApiError": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"stack": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ObjectID": {
+				"description": "Create a new ObjectID instance.",
+				"properties": {
+					"generationTime": {
+						"type": "number",
+						"format": "double",
+						"description": "The generation time of this ObjectId instance."
+					}
+				},
+				"required": [
+					"generationTime"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EventEntity": {
+				"properties": {
+					"_id": {
+						"$ref": "#/components/schemas/ObjectID"
+					},
+					"messageId": {
+						"type": "string"
+					},
+					"message": {},
+					"messageDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"updateDate": {
+						"type": "string"
+					},
+					"creationDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"country": {
+						"type": "string"
+					},
+					"serviceType": {
+						"type": "string"
+					},
+					"service": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "nodeApp",
+		"version": "1.0.0",
+		"description": "Microservicio con distintas practicas realizadas en node",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "mcarrenog"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/Events": {
+			"post": {
+				"operationId": "PostEvents",
+				"responses": {
+					"200": {
+						"description": "EventResponse",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"EventController"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"items": {
+									"$ref": "#/components/schemas/EventEntity"
+								},
+								"type": "array"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetEvents",
+				"responses": {
+					"200": {
+						"description": "EventResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/EventEntity"
+									},
+									"type": "array"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"EventController"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "country",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Event": {
+			"put": {
+				"operationId": "PutEvent",
+				"responses": {
+					"200": {
+						"description": "EventResponse",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"EventController"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EventEntity"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteEvent",
+				"responses": {
+					"200": {
+						"description": "EventResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"EventController"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EventEntity"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Indicator": {
+			"get": {
+				"operationId": "GetIndicator",
+				"responses": {
+					"200": {
+						"description": "IndicatorResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"IndicatorController"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "date",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	],
+	"tags": [
+		{
+			"name": "EventController",
+			"description": "EventController Api"
+		},
+		{
+			"name": "IndicatorController",
+			"description": "IndicatorController Api"
+		}
+	]
+}
